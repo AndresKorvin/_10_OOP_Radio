@@ -10,9 +10,9 @@ public class Radio {
         }
     }
     public void nextStation() {
-        if (currentStation < 9 && currentStation >= 0) {
+        if (currentStation >= 0 && currentStation < 9) {
             currentStation++;
-        } else if (currentStation > 8 || currentStation < 0) {
+        } else {
             currentStation = 0;
         }
     }
@@ -20,7 +20,7 @@ public class Radio {
     public void previousStation() {
         if (currentStation > 0 && currentStation <= 9) {
             currentStation--;
-        } else if (currentStation < 1 || currentStation > 9) {
+        } else {
             currentStation = 9;
         }
     }
