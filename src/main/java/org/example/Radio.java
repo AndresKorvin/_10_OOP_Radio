@@ -1,16 +1,19 @@
 package org.example;
 
 public class Radio {
-    int currentStation;
-    int currentVolume;
+    private int currentStation;
+    private int currentVolume;
 
-    public void changeStation(int stationButton) {
-        if (stationButton >= 0 && stationButton <= 9) {
+    public void setCurrentStation(int stationButton) {
             currentStation = stationButton;
-        }
     }
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
     public void nextStation() {
-        if (currentStation >= 0 && currentStation < 9) {
+        if (currentStation > -1 && currentStation < 9) {
             currentStation++;
         } else {
             currentStation = 0;
@@ -18,11 +21,21 @@ public class Radio {
     }
 
     public void previousStation() {
-        if (currentStation > 0 && currentStation <= 9) {
+        if (currentStation > 0 && currentStation < 10) {
             currentStation--;
         } else {
             currentStation = 9;
         }
+    }
+
+    public void setCurrentVolume(int volumeLevel) {
+        if (volumeLevel >= 0 && volumeLevel <= 10) {
+            currentVolume = volumeLevel;
+        }
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
     public void increaseVolume() {
@@ -36,4 +49,6 @@ public class Radio {
             currentVolume = currentVolume - 1;
         }
     }
+
+
 }
