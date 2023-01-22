@@ -1,0 +1,9 @@
+0,	0,  1,   //int inputCurrentStation, int amountStation, int expected
+0,	5,  1
+0,	9,  1
+5,	5,  1
+5,	9,  6
+5,	0,  6
+9,	9,  1
+9,	0,  0
+9,	5,  1
