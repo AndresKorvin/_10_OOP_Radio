@@ -67,7 +67,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(inputVolume);
         radio.increaseVolume();
-        assertEquals(radio.getCurrentVolume(), expected);
+        assertEquals(expected, radio.getCurrentVolume());
     }
 
     @ParameterizedTest
@@ -80,7 +80,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(inputVolume);
         radio.reduceVolume();
-        assertEquals(radio.getCurrentVolume(), expected);
+        assertEquals(expected, radio.getCurrentVolume());
     }
 
     @ParameterizedTest
@@ -94,6 +94,6 @@ class RadioTest {
     void setVolumeLevel(int inputVolume, int expected) {
         Radio radio = new Radio();
         radio.setCurrentVolume(inputVolume);
-        assertEquals(radio.getCurrentVolume(), expected);
+        assertEquals(expected, radio.getCurrentVolume());
     }
 }
