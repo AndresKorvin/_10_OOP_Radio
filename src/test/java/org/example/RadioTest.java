@@ -17,7 +17,7 @@ class RadioTest {
     })
     void  shouldSetAmountStation(int amountOfStation, int expected) {
         Radio radio = new Radio(amountOfStation);
-        assertEquals(expected,radio.getAmountOfStation());
+        assertEquals(expected,radio.getAmountOfStations());
     }
 
     @ParameterizedTest

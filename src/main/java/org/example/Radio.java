@@ -1,71 +1,77 @@
 package org.example;
 
-import java.util.Scanner;
-
 public class Radio {
     private int currentStation = 0;
     private int currentVolume = 0;
-    private  int amountOfStation = 9;
-    public Radio (int amountStation) {
+    private int amountOfStations = 9;
+
+    public Radio(int amountStation) {
         if (amountStation < 1 || amountStation > 10) {
             amountStation = 10;
         }
-        this.amountOfStation = amountStation - 1;
+
+        this.amountOfStations = amountStation - 1;
     }
+
     public Radio() {
         System.out.println("Установлено 10 станций");
     }
-    public int getAmountOfStation() {
-        return amountOfStation;
+
+    public int getAmountOfStations() {
+        return this.amountOfStations;
     }
 
     public void setCurrentStation(int stationButton) {
-            if (stationButton >= 0 && stationButton <= amountOfStation) {
-                currentStation = stationButton;
-            }
+        if (stationButton >= 0 && stationButton <= this.amountOfStations) {
+            this.currentStation = stationButton;
+        }
+
     }
 
     public int getCurrentStation() {
-        return currentStation;
+        return this.currentStation;
     }
 
     public void nextStation() {
-        if (currentStation > -1 && currentStation < amountOfStation) {
-            currentStation++;
+        if (this.currentStation > -1 && this.currentStation < this.amountOfStations) {
+            ++this.currentStation;
         } else {
-            currentStation = 0;
+            this.currentStation = 0;
         }
+
     }
 
     public void previousStation() {
-        if (currentStation > 0 && currentStation <= amountOfStation) {
-            currentStation--;
+        if (this.currentStation > 0 && this.currentStation <= this.amountOfStations) {
+            --this.currentStation;
         } else {
-            currentStation = amountOfStation;
+            this.currentStation = this.amountOfStations;
         }
+
     }
 
     public void setCurrentVolume(int volumeLevel) {
         if (volumeLevel >= 0 && volumeLevel <= 100) {
-            currentVolume = volumeLevel;
+            this.currentVolume = volumeLevel;
         }
+
     }
 
     public int getCurrentVolume() {
-        return currentVolume;
+        return this.currentVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 100) {
-            currentVolume = currentVolume + 5;
+        if (this.currentVolume < 100) {
+            this.currentVolume += 5;
         }
+
     }
 
     public void reduceVolume() {
-        if (currentVolume > 0) {
-            currentVolume = currentVolume - 5;
+        if (this.currentVolume > 0) {
+            this.currentVolume -= 5;
         }
+
     }
-
-
 }
