@@ -25,7 +25,6 @@ public class Radio {
         if (stationButton >= 0 && stationButton <= this.amountOfStations) {
             this.currentStation = stationButton;
         }
-
     }
 
     public int getCurrentStation() {
@@ -38,7 +37,6 @@ public class Radio {
         } else {
             this.currentStation = 0;
         }
-
     }
 
     public void previousStation() {
@@ -47,7 +45,6 @@ public class Radio {
         } else {
             this.currentStation = this.amountOfStations;
         }
-
     }
 
     public void setCurrentVolume(int volumeLevel) {

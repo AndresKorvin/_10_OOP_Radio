@@ -13,7 +13,8 @@ class RadioTest {
             "1,0",
             "5,4",
             "9,8",
-            "10,9"
+            "10,9",
+            "11,9"
     })
     void  shouldSetAmountStation(int amountOfStation, int expected) {
         Radio radio = new Radio(amountOfStation);
@@ -39,6 +40,7 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
+            "-2,0,  9",
             "0,	0,  9",
             "0,	5,  4",
             "0,	9,  8",
@@ -48,6 +50,7 @@ class RadioTest {
             "9,	9,  8",
             "9,	0,  8",
             "9,	5,  4",
+            "10,5,  4"
     })
     void shouldPreviousStation(int inputCurrentStation, int amountStation, int expected) {
         Radio radio = new Radio(amountStation);
