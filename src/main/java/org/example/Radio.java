@@ -32,7 +32,7 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (this.currentStation > -1 && this.currentStation < this.amountOfStations) {
+        if (this.currentStation < this.amountOfStations) {
             ++this.currentStation;
         } else {
             this.currentStation = 0;
@@ -40,7 +40,7 @@ public class Radio {
     }
 
     public void previousStation() {
-        if (this.currentStation > 0 && this.currentStation <= this.amountOfStations) {
+        if (this.currentStation > 0) {
             --this.currentStation;
         } else {
             this.currentStation = this.amountOfStations;
