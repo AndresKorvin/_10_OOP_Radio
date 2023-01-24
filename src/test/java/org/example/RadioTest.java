@@ -12,8 +12,8 @@ class RadioTest {
             "0,9",
             "1,0",
             "5,4",
-            "9,8",
-            "10,9"
+            "10,9",
+            "11,9"
     })
     void  shouldSetAmountStation(int amountOfStation, int expected) {
         Radio radio = new Radio(amountOfStation);

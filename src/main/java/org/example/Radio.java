@@ -30,7 +30,7 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation > -1 && currentStation < amountOfStation) {
+        if (currentStation < amountOfStation) {
             currentStation++;
         } else {
             currentStation = 0;
@@ -38,7 +38,7 @@ public class Radio {
     }
 
     public void previousStation() {
-        if (currentStation > 0 && currentStation <= amountOfStation) {
+        if (currentStation > 0) {
             currentStation--;
         } else {
             currentStation = amountOfStation;
