@@ -3,14 +3,12 @@ package org.example;
 public class Radio {
     private int currentStation = 0;
     private int currentVolume = 0;
-    private int amountOfStations = 9;
+    private  int amountOfStations = 9;
 
-    public Radio(int amountStation) {
-        if (amountStation < 1 || amountStation > 10) {
-            amountStation = 10;
+    public Radio (int amountOfStations) {
+        if (amountOfStations >= 1 && amountOfStations <= 10) {
+            this.amountOfStations = amountOfStations - 1;
         }
-
-        this.amountOfStations = amountStation - 1;
     }
 
     public Radio() {
@@ -34,6 +32,7 @@ public class Radio {
     public void nextStation() {
         if (this.currentStation < this.amountOfStations) {
             ++this.currentStation;
+
         } else {
             this.currentStation = 0;
         }
@@ -42,6 +41,7 @@ public class Radio {
     public void previousStation() {
         if (this.currentStation > 0) {
             --this.currentStation;
+
         } else {
             this.currentStation = this.amountOfStations;
         }
