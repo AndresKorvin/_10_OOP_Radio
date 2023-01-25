@@ -6,11 +6,11 @@ public class Radio {
     private int currentStation = 0;
     private int currentVolume = 0;
     private  int amountOfStation = 9;
+
     public Radio (int amountStation) {
-        if (amountStation < 1 || amountStation > 10) {
-            amountStation = 10;
+        if (amountStation >= 1 && amountStation <= 10) {
+            this.amountOfStation = amountStation - 1;
         }
-        this.amountOfStation = amountStation - 1;
     }
     public Radio() {
         System.out.println("Установлено 10 станций");
