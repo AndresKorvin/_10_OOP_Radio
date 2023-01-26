@@ -2,26 +2,9 @@ package org.example;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    @ParameterizedTest
-    @CsvFileSource(resources = "/changeStationData.csv")
-    void boundaryValuesAndEquivalenceClassesOfChangeStation(int stationButton, int expected) {
-        Radio radio = new Radio();
-        radio.setCurrentStation(stationButton);
-        assertEquals(radio.getCurrentStation(), expected);
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/nextStationData.csv")
-    void shouldNextStation(int inputCurrentStation, int expected) {
-        Radio radio = new Radio();
-        radio.setCurrentStation(inputCurrentStation);
-        radio.nextStation();
-        assertEquals(radio.getCurrentStation(), expected);
-    }
 
     @ParameterizedTest
     @CsvSource({
@@ -29,54 +12,87 @@ class RadioTest {
             "0,9",
             "1,0",
             "5,4",
-            "9,8",
-            "10,9"
+            "100,99"
     })
-    void shouldPreviousStation(int inputCurrentStation, int expected) {
-        Radio radio = new Radio();
+    void  shouldSetAmountStation(int amountOfStation, int expected) {
+        Radio radio = new Radio(amountOfStation);
+        assertEquals(expected,radio.getAmountOfStation());
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/shouldSetCurrentStationData.csv")
+    void shouldSetCurrentStation(int stationButton, int amountOfStation, int expected) {
+        Radio radio = new Radio(amountOfStation);
+        radio.setCurrentStation(stationButton);
+        assertEquals(expected, radio.getCurrentStation());
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/shouldNextStationData.csv")
+    void shouldNextStation(int inputCurrentStation, int amountStation, int expected) {
+        Radio radio = new Radio(amountStation);
+        radio.setCurrentStation(inputCurrentStation);
+        radio.nextStation();
+        assertEquals(expected, radio.getCurrentStation());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0,	0,  9",
+            "0,	5,  4",
+            "0,	9,  8",
+            "5,	5,  4",
+            "5,	9,  4",
+            "5,	0,  4",
+            "9,	9,  8",
+            "9,	0,  8",
+            "9,	5,  4",
+    })
+    void shouldPreviousStation(int inputCurrentStation, int amountStation, int expected) {
+        Radio radio = new Radio(amountStation);
         radio.setCurrentStation(inputCurrentStation);
         radio.previousStation();
-        assertEquals(radio.getCurrentStation(), expected);
+        assertEquals(expected, radio.getCurrentStation());
 
     }
 
     @ParameterizedTest
     @CsvSource({
-            "0,1",
-            "5,6",
-            "10,10"
+            "0,5",
+            "50,55",
+            "100,100"
     })
     void shouldIncreaseVolume(int inputVolume, int expected) {
         Radio radio = new Radio();
         radio.setCurrentVolume(inputVolume);
         radio.increaseVolume();
-        assertEquals(radio.getCurrentVolume(), expected);
+        assertEquals(expected, radio.getCurrentVolume());
     }
 
     @ParameterizedTest
     @CsvSource({
             "0,0",
-            "5,4",
-            "10,9"
+            "50,45",
+            "100,95"
     })
     void shouldReduceVolume(int inputVolume, int expected) {
         Radio radio = new Radio();
         radio.setCurrentVolume(inputVolume);
         radio.reduceVolume();
-        assertEquals(radio.getCurrentVolume(), expected);
+        assertEquals(expected, radio.getCurrentVolume());
     }
 
     @ParameterizedTest
     @CsvSource({
             "-1,0",
             "0,0",
-            "5,5",
-            "10,10",
-            "11,0"
+            "50,50",
+            "100,100",
+            "101,0"
     })
     void setVolumeLevel(int inputVolume, int expected) {
         Radio radio = new Radio();
         radio.setCurrentVolume(inputVolume);
-        assertEquals(radio.getCurrentVolume(), expected);
+        assertEquals(expected, radio.getCurrentVolume());
     }
 }
