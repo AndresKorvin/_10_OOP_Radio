@@ -8,7 +8,7 @@ public class Radio {
     private  int amountOfStation = 9;
 
     public Radio (int amountStation) {
-        if (amountStation >= 1 && amountStation <= 10) {
+        if (amountStation > 0) {
             this.amountOfStation = amountStation - 1;
         }
     }
