@@ -99,4 +99,40 @@ class RadioTest {
         radio.setCurrentVolume(inputVolume);
         assertEquals(expected, radio.getCurrentVolume());
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0,0",
+            "50,50",
+            "100,100"
+    })
+    void shouldGetCurrenVolume(int currentVolume, int expected) {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(currentVolume);
+        assertEquals(expected, radio.getCurrentVolume());
+
+    }
+    @ParameterizedTest
+    @CsvSource({
+            "0,0,10,0,0,10",
+            "5,50,100,5,50,100",
+    })
+    void shouldInputThreeParametrsRadio(int currentStation, int currentVolume, int amountOfStations,
+                                        int expectedCurrentStation, int expectedCurrentVolume, int expectedAmountOfStations) {
+        Radio radio = new Radio(currentStation, currentVolume, amountOfStations);
+        assertEquals(expectedCurrentStation, radio.getCurrentStation());
+        assertEquals(expectedCurrentVolume, radio.getCurrentVolume());
+        assertEquals(expectedAmountOfStations, radio.getAmountOfStations());
+    }
+    @ParameterizedTest
+    @CsvSource({
+            "0,0",
+            "5,5",
+            "100,100"
+    })
+    void shouldSetAmountOfStations (int SetAmountOfStations, int expected) {
+        Radio radio = new Radio();
+        radio.setAmountOfStations(SetAmountOfStations);
+        assertEquals(expected, radio.getAmountOfStations());
+    }
 }
