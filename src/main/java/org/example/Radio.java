@@ -1,54 +1,61 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private  int amountOfStations = 9;
 
-    public void setCurrentStation(int stationButton) {
-            currentStation = stationButton;
+    public Radio (int amountOfStations) {
+        if (amountOfStations > 0) {
+            this.amountOfStations = amountOfStations - 1;
+        }
     }
 
-    public int getCurrentStation() {
-        return currentStation;
+    public void setCurrentStation(int stationButton) {
+        if (stationButton >= 0 && stationButton <= this.amountOfStations) {
+            this.currentStation = stationButton;
+        }
     }
 
     public void nextStation() {
-        if (currentStation > -1 && currentStation < 9) {
-            currentStation++;
+        if (this.currentStation < this.amountOfStations) {
+            ++this.currentStation;
         } else {
-            currentStation = 0;
+            this.currentStation = 0;
         }
     }
 
     public void previousStation() {
-        if (currentStation > 0 && currentStation < 10) {
-            currentStation--;
+        if (this.currentStation > 0) {
+            --this.currentStation;
         } else {
-            currentStation = 9;
+            this.currentStation = this.amountOfStations;
         }
     }
 
     public void setCurrentVolume(int volumeLevel) {
-        if (volumeLevel >= 0 && volumeLevel <= 10) {
-            currentVolume = volumeLevel;
+        if (volumeLevel >= 0 && volumeLevel <= 100) {
+            this.currentVolume = volumeLevel;
         }
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
     public void increaseVolume() {
-        if (currentVolume < 10) {
-            currentVolume = currentVolume + 1;
+        if (this.currentVolume < 100) {
+            this.currentVolume += 5;
         }
     }
 
     public void reduceVolume() {
-        if (currentVolume > 0) {
-            currentVolume = currentVolume - 1;
+        if (this.currentVolume > 0) {
+            this.currentVolume -= 5;
         }
     }
-
-
 }
